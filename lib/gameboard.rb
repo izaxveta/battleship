@@ -1,6 +1,6 @@
 class GameBoard
   attr_reader :possible_input,
-              :player_input,
+              :input_log,
               :field,
               :grid
   def initialize
