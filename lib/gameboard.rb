@@ -15,10 +15,10 @@ class GameBoard
 
   def render_grid
     @grid = {
-            "A"=>{"1"=>[false, ""], "2"=>[false, ""], "3"=>[false, ""], "4"=>[false, ""]},
-            "B"=>{"1"=>[false, ""], "2"=>[false, ""], "3"=>[false, ""], "4"=>[false, ""]},
-            "C"=>{"1"=>[false, ""], "2"=>[false, ""], "3"=>[false, ""], "4"=>[false, ""]},
-            "D"=>{"1"=>[false, ""], "2"=>[false, ""], "3"=>[false, ""], "4"=>[false, ""]}
+            "A1"=>{false, ""}, "A2"=>{false, ""}, "A3"=>{false, ""}, "A4"=>{false, ""},
+            "B1"=>{false, ""}, "B2"=>{false, ""}, "B3"=>{false, ""}, "B4"=>{false, ""},
+            "C1"=>{false, ""}, "C2"=>{false, ""}, "C3"=>{false, ""}, "C4"=>{false, ""},
+            "D1"=>{false, ""}, "D2"=>{false, ""}, "D3"=>{false, ""}, "D4"=>{false, ""}
             }
   end
 
@@ -27,13 +27,13 @@ class GameBoard
       ~~~~~~~~~~~~~~~~~~~
       .   1   2   3   4
 
-      A #{@grid["A"]["1"][1]} #{@grid["A"]["2"][1]} #{@grid["A"]["3"][1]} #{@grid["A"]["4"][1]}
+      A #{@grid["A1"][1]} #{@grid["A2"][1]} #{@grid["A3"][1]} #{@grid["A4"][1]}
 
-      B #{@grid["B"]["1"][1]} #{@grid["B"]["2"][1]} #{@grid["B"]["3"][1]} #{@grid["B"]["4"][1]}
+      B #{@grid["B1"][1]} #{@grid["B2"][1]} #{@grid["B3"][1]} #{@grid["B4"][1]}
 
-      C #{@grid["C"]["1"][1]} #{@grid["C"]["2"][1]} #{@grid["C"]["3"][1]} #{@grid["C"]["4"][1]}
+      C #{@grid["C1"][1]} #{@grid["C2"][1]} #{@grid["C3"][1]} #{@grid["C4"][1]}
 
-      D #{@grid["D"]["1"][1]} #{@grid["D"]["2"][1]} #{@grid["D"]["3"][1]} #{@grid["D"]["4"][1]}
+      D #{@grid["D1"][1]} #{@grid["D2"][1]} #{@grid["D3"][1]} #{@grid["D4"][1]}
       ~~~~~~~~~~~~~~~~~~~"
   end
 

@@ -22,7 +22,7 @@ class StartUpSequenceTest < Minitest::Test
     various sizes on their map. They then take turns firing upon their opponent by
     calling out coordinates on their playing field. If a player's fire results in a 'hit',
     their map will be updated, indicating the location in which the hit was made. If
-    a player hits every coordinate of their opponents ship, that ship will sink.
+    a player hits every coordinate of their opponent's ship, that ship will sink.
     The game goes on until one player hits and sinks all of their opponents ships -
     that is when the winner is determined.\n\n"
 
