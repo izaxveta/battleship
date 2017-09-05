@@ -1,7 +1,7 @@
 class StartUpSequence
   attr_reader :player_input
               :instructions
-  def start
+  def initialize
     @player_input = nil
     "Welcome to BATTLESHIP!\n\n"
   end
@@ -10,12 +10,14 @@ class StartUpSequence
     puts "Would you like to (p)lay, read the (i)nstrucitons, or (q)uit?"
     @player_input = gets.chomp.downcase
     if @player_input == "p" || @player_input == "play"
-      #initialize ship placement sequence
+        break
     elsif @player_input == "i" || @player_input == "instructions"
       game_instructions
     elsif @player_input == "q" || @player_input == "quit"
       end_game
     else
+      ">:("
+      sleep(2)
       "WARNING: Invalid entry!"
       options
     end

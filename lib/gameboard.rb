@@ -1,3 +1,5 @@
+require 'lib/ship'
+
 class GameBoard
   attr_reader :possible_input,
               :input_log,
@@ -36,6 +38,23 @@ class GameBoard
       D #{@grid["D1"][1]} #{@grid["D2"][1]} #{@grid["D3"][1]} #{@grid["D4"][1]}
       ~~~~~~~~~~~~~~~~~~~"
   end
+
+  def render_input_log
+    @input_log.each do |shoot|
+      if @grid[shoot][0] = true
+        @grid[shoot][1] = "H"
+      else
+        @grid[shoot][1] = "M"
+      end
+  end
+
+  def place_ship(ship)
+    ship.coordinates.each do |point|
+      @grid[point][0] = true
+    end
+  end
+
+
 
 end
 
