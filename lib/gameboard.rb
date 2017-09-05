@@ -47,15 +47,6 @@ class GameBoard
         @grid[shoot][1] = "M"
       end
   end
-
-  def place_ship(ship)
-    ship.coordinates.each do |point|
-      @grid[point][0] = true
-    end
-  end
-
-
-
 end
 
 game = GameBoard.new

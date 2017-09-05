@@ -1,16 +1,17 @@
-class PlayerValidations
-  def initialize
-    @player_input = ["A1", "C1"] #VALID
-    @player_input = ["A1", "E5"] #INVALID
+require 'lib/ship'
+require 'lib/board'
+
+class ShipValidations
+  attr_reader :ship_length,
+              :coordinates
+
+  def initialize(ship_length)
+    @ship_length = ship_length
     @orientation = nil
     @parameters = ["A1", "A2", "A3", "A4",
                   "B1", "B2", "B3", "B4",
                   "C1", "C2", "C3", "C4",
                   "D1", "D2", "D3", "D4"]
-  end
-
-  def validate
-    determine_within_parameters
   end
   #======================================================VALIDATIONS
   # PLACING FIRST SHIP
@@ -23,12 +24,12 @@ class PlayerValidations
   # If coordinate_length == ship_length, place ship
 
   #PLACING SECOND SHIP
-  Get user input coordinates
-  Determine if coordinates are within parameters
-  Determine if coordinates are diagonal
-  Determine orientation
-  Given orientation, determine length of coordinates
-  If coordinate_length != ship_length, gets new coordinates
+  # Get user input coordinates
+  # Determine if coordinates are within parameters
+  # Determine if coordinates are diagonal
+  # Determine orientation
+  # Given orientation, determine length of coordinates
+  # If coordinate_length != ship_length, gets new coordinates
   If coordinate_length == ship_length Determine overlap
   If second ship does not overlap first ship, Determine wrap
   If second ship does not wrap, place ship
@@ -75,7 +76,11 @@ class PlayerValidations
       Please re-enter valid coordinates."
       determine_within_parameters
     else
-      determine_overlap
+      if @ship_length == 3
+        fill_ship_three_vertically
+      else
+        determine_overlap
+      end
     end
   end
 
@@ -87,31 +92,30 @@ class PlayerValidations
         Please re-enter valid coordinates."
         determine_within_parameters
       else
-        determine_overlap
+        if @ship_length == 3
+          fill_ship_three_vertically
+        else
+          determine_overlap
+        end
       end
   end
 
-  #IF COORDINATE LENGTH != SHIP LENGTH RETURN INVALID INPUT
-  def determine_overlap
-    
-  end
-
   def fill_ship_three_vertically
-    #MAKING A 3 COORDINATE SHIP FILL VERTICALLY
-    ship_one = ["A1", "C1"]
-    ship_one = ["#{ship_one[0]}",
-    "#{(ship_one[0][0].next.concat(ship_one[0][1]))}",
-    "#{ship_one[1]}"]
-    ship_one.length
+    @ship = ["#{@coordinates[0]}",
+    "#{(@coordinates[0][0].next.concat(@coordinates[0][1]))}",
+    "#{@coordinates[1]}"]
+    determine_overlap
   end
 
   def fill_ship_three_horizontally
-    #MAKING A 3 COORDINATE SHIP FILL HORIZONTALLY
-    ship_one = ["C1", "C3"]
-    ship_one = ["#{ship_one[0]}",
-    "#{(ship_one[0][0].concat(ship_one[0][1].next))}",
-    "#{ship_one[1]}"]
-    ship_one.length
+    @ship = ["#{@coordinates[0]}",
+    "#{(@coordinates[0][0].concat(@coordinates[0][1].next))}",
+    "#{@coordinates[1]}"]
+    determine_overlap
+  end
+
+  def determine_overlap
+    @ship.each do |
   end
 
 end
