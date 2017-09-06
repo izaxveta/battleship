@@ -25,10 +25,16 @@ class GameBoardTest < Minitest::Test
     assert_equal [], map.input_log
   end
 
-  def test_it_starts_with_empty_grid
+  def test_it_starts_with_grid
     map = GameBoard.new
+    expected = {
+                "A1"=>[false, ""], "A2"=>[false, ""], "A3"=>[false, ""], "A4"=>[false, ""],
+                "B1"=>[false, ""], "B2"=>[false, ""], "B3"=>[false, ""], "B4"=>[false, ""],
+                "C1"=>[false, ""], "C2"=>[false, ""], "C3"=>[false, ""], "C4"=>[false, ""],
+                "D1"=>[false, ""], "D2"=>[false, ""], "D3"=>[false, ""], "D4"=>[false, ""]
+                }
 
-    assert_nil map.grid
+    assert_equal expected, map.grid
   end
 
   def test_it_starts_with_empty_field
@@ -37,31 +43,25 @@ class GameBoardTest < Minitest::Test
     assert_nil map.field
   end
 
-  def test_rendering_grid_creates_new_grid
+  def test_rendering_field_creates_new_field
+    skip
     map = GameBoard.new
-
-    assert_nil map.grid
-
-    map.render_grid
-    expected = {
-              "A"=>{"1"=>[false, ""], "2"=>[false, ""], "3"=>[false, ""], "4"=>[false, ""]},
-              "B"=>{"1"=>[false, ""], "2"=>[false, ""], "3"=>[false, ""], "4"=>[false, ""]},
-              "C"=>{"1"=>[false, ""], "2"=>[false, ""], "3"=>[false, ""], "4"=>[false, ""]},
-              "D"=>{"1"=>[false, ""], "2"=>[false, ""], "3"=>[false, ""], "4"=>[false, ""]}
-              }
-
-    assert_equal expected, map.grid
-  end
-
-  def test_must_render_grid_before_rendering_field
-    map = GameBoard.new
-
     assert_nil map.field
-    assert_nil map.grid
-    
-    map.render_grid
-    expected = map.render_field
 
+    map.grid
+    map.render_field
+    expected = "B A T T L E S H I P
+      ~~~~~~~~~~~~~~~~~~~
+      .   1   2   3   4
+
+      A #{@grid["A1"][1]} #{@grid["A2"][1]} #{@grid["A3"][1]} #{@grid["A4"][1]}
+
+      B #{@grid["B1"][1]} #{@grid["B2"][1]} #{@grid["B3"][1]} #{@grid["B4"][1]}
+
+      C #{@grid["C1"][1]} #{@grid["C2"][1]} #{@grid["C3"][1]} #{@grid["C4"][1]}
+
+      D #{@grid["D1"][1]} #{@grid["D2"][1]} #{@grid["D3"][1]} #{@grid["D4"][1]}
+      ~~~~~~~~~~~~~~~~~~~"
     assert_equal expected, map.field
   end
 end

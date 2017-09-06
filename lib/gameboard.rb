@@ -1,31 +1,28 @@
-require 'lib/ship'
+require './lib/ship'
 
 class GameBoard
   attr_reader :possible_input,
               :input_log,
-              :field,
-              :grid
+              :board
+  attr_accessor :grid
+
   def initialize
     @possible_input = ["A1", "A2", "A3", "A4",
                        "B1", "B2", "B3", "B4",
                        "C1", "C2", "C3", "C4",
                        "D1", "D2", "D3", "D4"]
     @input_log = []
-    @grid = nil
-    @field = nil
-  end
-
-  def render_grid
     @grid = {
-            "A1"=>{false, ""}, "A2"=>{false, ""}, "A3"=>{false, ""}, "A4"=>{false, ""},
-            "B1"=>{false, ""}, "B2"=>{false, ""}, "B3"=>{false, ""}, "B4"=>{false, ""},
-            "C1"=>{false, ""}, "C2"=>{false, ""}, "C3"=>{false, ""}, "C4"=>{false, ""},
-            "D1"=>{false, ""}, "D2"=>{false, ""}, "D3"=>{false, ""}, "D4"=>{false, ""}
+            "A1"=>[false, ""], "A2"=>[false, ""], "A3"=>[false, ""], "A4"=>[false, ""],
+            "B1"=>[false, ""], "B2"=>[false, ""], "B3"=>[false, ""], "B4"=>[false, ""],
+            "C1"=>[false, ""], "C2"=>[false, ""], "C3"=>[false, ""], "C4"=>[false, ""],
+            "D1"=>[false, ""], "D2"=>[false, ""], "D3"=>[false, ""], "D4"=>[false, ""]
             }
+    @board = nil
   end
 
-  def render_field
-    @field = "B A T T L E S H I P
+  def render_board
+    @board = "B A T T L E S H I P
       ~~~~~~~~~~~~~~~~~~~
       .   1   2   3   4
 
@@ -39,15 +36,16 @@ class GameBoard
       ~~~~~~~~~~~~~~~~~~~"
   end
 
-  def render_input_log
-    @input_log.each do |shoot|
-      if @grid[shoot][0] = true
-        @grid[shoot][1] = "H"
-      else
-        @grid[shoot][1] = "M"
-      end
+  def place_ship(ship)
+    ship.coordinate_range.each do |point|
+      @grid[point][0] = true
+    end
   end
 end
-
-game = GameBoard.new
+#
+# game = GameBoard.new
+# game.render_board
+# game.grid["A1"][1] = "H"
+# game.render_board
+#
 # require 'pry'; binding.pry
