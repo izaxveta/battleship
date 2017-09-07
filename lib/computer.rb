@@ -12,7 +12,4 @@ class Computer
             "D1"=>[false, ""], "D2"=>[true, ""], "D3"=>[true, ""], "D4"=>[true, ""]
             }
   end
-
-  
-
 end

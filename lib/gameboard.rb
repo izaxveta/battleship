@@ -1,24 +1,24 @@
 require './lib/ship'
 
 class GameBoard
-  attr_reader :possible_input,
+  attr_reader :board,
               :input_log,
-              :board
+              :possible_input
   attr_accessor :grid
 
   def initialize
+    @board = nil
+    @input_log = []
     @possible_input = ["A1", "A2", "A3", "A4",
                        "B1", "B2", "B3", "B4",
                        "C1", "C2", "C3", "C4",
                        "D1", "D2", "D3", "D4"]
-    @input_log = []
     @grid = {
             "A1"=>[false, ""], "A2"=>[false, ""], "A3"=>[false, ""], "A4"=>[false, ""],
             "B1"=>[false, ""], "B2"=>[false, ""], "B3"=>[false, ""], "B4"=>[false, ""],
             "C1"=>[false, ""], "C2"=>[false, ""], "C3"=>[false, ""], "C4"=>[false, ""],
             "D1"=>[false, ""], "D2"=>[false, ""], "D3"=>[false, ""], "D4"=>[false, ""]
             }
-    @board = nil
   end
 
   def render_board
@@ -42,10 +42,3 @@ class GameBoard
     end
   end
 end
-#
-# game = GameBoard.new
-# game.render_board
-# game.grid["A1"][1] = "H"
-# game.render_board
-#
-# require 'pry'; binding.pry

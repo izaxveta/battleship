@@ -16,5 +16,21 @@ class PlayerTest < Minitest::Test
     assert_nil hooman.input
   end
 
-  
+  def test_validating_ship_with_invalid_coordinates_wont_create_ship
+    hooman = Player.new
+
+    
+  end
+
+  def test_validating_ship_with_valid_coordinates_will_create_ship
+    hooman = Player.new
+
+  end
+
+  def test_create_ship_will_place_ship_on_board
+    hooman = Player.new
+
+  end
+
+
 end

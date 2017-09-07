@@ -98,7 +98,7 @@ class ShipValidations
   end
 
   def create_validated_ship(coordinates)
-    puts @validated_coordiates = coordinates
+    @validated_coordiates = coordinates
   end
 
   def get_input
